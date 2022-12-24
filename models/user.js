@@ -17,10 +17,7 @@ const userSchema=mongoose.Schema({
         type:String,
         required:true
     },
-    dateadded:{
-        type:Date,
-        default:Date.now()
-    }
+   
 })
 const user=mongoose.model("user",userSchema);
 module.exports=user;
