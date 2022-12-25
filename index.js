@@ -11,7 +11,8 @@ const user = require("./models/user");
 app.use(express.json());
 app.use(cors());
 mongoose.connect("mongodb+srv://hiren123:hiren123@cluster0.unp4crn.mongodb.net/noteflutter");
-app.post("/note/list", async (req, res) => {
+app.get("/note/list", async (req, res) => {
+  console.log("hello");
   const data = await user.find();
    console.log(data);
   res.send(data);
