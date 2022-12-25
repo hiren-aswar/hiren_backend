@@ -35,17 +35,10 @@ app.post("/note/delet", async (req, res) => {
 });
 app.post("/note/update", async (req, res) => {
   console.log(req.body);
- await user.findByIdAndUpdate(req.body.id,req.body,
-                            function (err, docs) {
-    if (err){
-        console.log(err)
-    }
-    else{
-        console.log("Updated User : ", docs);
-    }
+  const data = await user.findByIdAndUpdate(req.body.id,req.body);
+   res.json(data);
 });
-  
-});
+
 const PORT=process.env.PORT||3001;
 app.listen(PORT, () => {
   console.log("server is listing");
