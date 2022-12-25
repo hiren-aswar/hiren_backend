@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 mongoose.connect("mongodb+srv://hiren123:hiren123@cluster0.unp4crn.mongodb.net/noteflutter");
 app.get("/note/list", async (req, res) => {
-  const data = await user.find({userid:"hiren aswar"});
+  const data = await user.find();
    console.log(data);
   res.json(data);
 });
@@ -34,8 +34,16 @@ app.post("/note/delet", async (req, res) => {
 });
 app.post("/note/update", async (req, res) => {
   console.log(req.body);
-  const data = await user.findByIdAndUpdate(req.body.id);
-   res.json(data);
+ await user.findByIdAndUpdate(req.body.id,req.body,
+                            function (err, docs) {
+    if (err){
+        console.log(err)
+    }
+    else{
+        console.log("Updated User : ", docs);
+    }
+});
+  
 });
 const PORT=process.env.PORT||3001;
 app.listen(PORT, () => {
