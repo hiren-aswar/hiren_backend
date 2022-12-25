@@ -15,7 +15,7 @@ app.get("/note/list", async (req, res) => {
   console.log("hello");
   const data = await user.find();
    console.log(data);
-  res.send(data);
+  res.json(data);
 });
 app.post("/note/add", async (req, res) => {
   console.log(req.body);
