@@ -33,11 +33,7 @@ app.post("/note/delet", async (req, res) => {
   const data = await user.deleteOne({ id: req.body.id });
    res.json(data);
 });
-app.post("/note/update", async (req, res) => {
-  console.log(req.body);
-  const data = await user.findByIdAndUpdate(req.body.id,req.body);
-   res.json(data);
-});
+
 
 const PORT=process.env.PORT||3001;
 app.listen(PORT, () => {
